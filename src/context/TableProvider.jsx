@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import propTypes from 'prop-types';
 import TableContext from './TableContext';
 
+const INITIAL_DROPDOW = ['population', 'orbital_period',
+  'diameter', 'rotation_period', 'surface_water'];
+
 function TableProvider({ children }) {
   const [returnApi, setReturnApi] = useState([]);
   const [planetsName, setPlanetsName] = useState('');
@@ -10,8 +13,7 @@ function TableProvider({ children }) {
   const [operatorFiltred, setOperatorFiltred] = useState('maior que');
   const [numberFiltred, setNumberFiltred] = useState(0);
   const [allFilters, setAllFilters] = useState([]);
-  const [dropdow, setDropdow] = useState(['population', 'orbital_period',
-    'diameter', 'rotation_period', 'surface_water']);
+  const [dropdow, setDropdow] = useState(INITIAL_DROPDOW);
 
   const ENDPOINT = 'https://swapi-trybe.herokuapp.com/api/planets/';
   useEffect(() => {
@@ -73,10 +75,24 @@ function TableProvider({ children }) {
     updateDropdow();
   };
 
+  const deleteFilters = (filter) => {
+    if (Array.isArray(filter)) {
+      setAllFilters([]);
+      setDropdow(INITIAL_DROPDOW);
+    } else {
+      const deleteFilter = allFilters
+        .filter((filters) => filters.columFiltred !== filter);
+      setAllFilters(deleteFilter);
+      setDropdow([...dropdow, filter]);
+    }
+  };
+
   const props = {
     apiFiltered,
     numberFiltred,
     dropdow,
+    allFilters,
+    deleteFilters,
     handleChangeName,
     handleFilters,
     handleChangeNumericValues,

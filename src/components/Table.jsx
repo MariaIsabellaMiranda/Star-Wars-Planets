@@ -7,7 +7,8 @@ const TABLEHEADER = ['Name', 'Rotation Period', 'Orbital Period', 'Diameter',
 
 function Table() {
   const { apiFiltered, handleChangeName, numberFiltred,
-    handleFilters, handleChangeNumericValues, dropdow } = useContext(TableContext);
+    handleFilters, handleChangeNumericValues, dropdow,
+    allFilters, deleteFilters } = useContext(TableContext);
 
   return (
     <main>
@@ -46,7 +47,29 @@ function Table() {
           Filtrar
 
         </button>
+        <button
+          type="button"
+          data-testid="button-remove-filters"
+          onClick={ () => deleteFilters(allFilters) }
+        >
+          Remover Filtros
+
+        </button>
       </form>
+      {allFilters.map((filter, index) => (
+        <div key={ index } data-testid="filter">
+          <p>
+            {`${filter.columFiltred}${filter.operatorFiltred}${filter.numberFiltred}`}
+          </p>
+          <button
+            type="button"
+            onClick={ () => deleteFilters(filter.columFiltred) }
+          >
+            Excluir
+
+          </button>
+        </div>
+      ))}
       <table>
         <thead>
           <tr>
