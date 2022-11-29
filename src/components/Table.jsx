@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import TableContext from '../context/TableContext';
-import '../Style/Table.css';
 
 const TABLEHEADER = ['Name', 'Rotation Period', 'Orbital Period', 'Diameter',
   'Climate', 'Gravity', 'Terrain', 'Surface Water', 'Population',
