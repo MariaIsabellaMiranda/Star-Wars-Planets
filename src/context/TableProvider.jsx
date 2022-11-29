@@ -5,6 +5,13 @@ import TableContext from './TableContext';
 const INITIAL_DROPDOW = ['population', 'orbital_period',
   'diameter', 'rotation_period', 'surface_water'];
 
+const INITIAL_COLUM_ORDER = {
+  column: 'population',
+  sort: 'ASC',
+};
+
+const ENDPOINT = 'https://swapi-trybe.herokuapp.com/api/planets/';
+
 function TableProvider({ children }) {
   const [returnApi, setReturnApi] = useState([]);
   const [planetsName, setPlanetsName] = useState('');
@@ -14,13 +21,20 @@ function TableProvider({ children }) {
   const [numberFiltred, setNumberFiltred] = useState(0);
   const [allFilters, setAllFilters] = useState([]);
   const [dropdow, setDropdow] = useState(INITIAL_DROPDOW);
+  const [orderColumn, setOrderColumn] = useState(INITIAL_COLUM_ORDER);
 
-  const ENDPOINT = 'https://swapi-trybe.herokuapp.com/api/planets/';
   useEffect(() => {
     const getPlanets = async () => {
       const { results } = await fetch(ENDPOINT).then((response) => response.json());
-      setReturnApi(results);
-      setApiFiltered(results);
+      const oneLess = -1;
+      const initialOrder = results
+        .sort((planetA, planetB) => {
+          if (planetA.name > planetB.name) return 1;
+          return oneLess;
+        });
+
+      setReturnApi(initialOrder);
+      setApiFiltered(initialOrder);
     };
     getPlanets();
   }, []);
@@ -87,11 +101,38 @@ function TableProvider({ children }) {
     }
   };
 
+  const handleOrderChange = ({ target }) => {
+    const { name, value } = target;
+    setOrderColumn((prevState) => ({ ...prevState, [name]: value }));
+  };
+
+  const handleOrder = () => {
+    const { column, sort } = orderColumn;
+    const oneLess = -1;
+
+    const sortingPlanets = apiFiltered.sort((planetA, planetB) => {
+      if (sort === 'ASC') {
+        if (planetA[column] === 'unknown') return 0;
+        if (planetB[column] === 'unknown') return oneLess;
+        return planetA[column] - planetB[column];
+      }
+      if (planetA[column] === 'unknown') return 0;
+      if (planetB[column] === 'unknown') return oneLess;
+      return planetB[column] - planetA[column];
+    });
+
+    setApiFiltered([...sortingPlanets]);
+  };
+
   const props = {
     apiFiltered,
     numberFiltred,
     dropdow,
     allFilters,
+    INITIAL_DROPDOW,
+    orderColumn,
+    handleOrder,
+    handleOrderChange,
     deleteFilters,
     handleChangeName,
     handleFilters,
@@ -106,7 +147,7 @@ function TableProvider({ children }) {
 }
 
 TableProvider.propTypes = {
-  children: propTypes.element.isRequired,
+  children: propTypes.node.isRequired,
 };
 
 export default TableProvider;
