@@ -1,10 +1,52 @@
-# :construction: README em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto.
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+# Star Wars Planets
+
+# Sobre
+
+<p>Aqui fiz uma aplicação Front-End que consulta uma API para recuperar dados dos planetas do universo de Star Wars. Utilizei React com Hooks e como ferramente de manipulação de estado foi utilizado Context.<br>
+Nesta aplicação lidei com o retorno de uma API e manipulei os dados recebidos criando uma lógica de filtros para uma tabela de dados.<br>
+Desenvolvi também testes unitários utilizando a biblioteca React Testing Library e Jest, conseguindo uma cobertura de mais de 90%<br>
+Foi utilizada uma API desenvolvida pela Trybe para requisição dos dados.<p>
+
+<br>
+
+## Construído com
+  
+- React
+- Context
+- Hooks
+- RTL
+- Jest
+- CSS
+
+<br>
+
+## O que faz?
+
+Nesta aplicação o usuário poderá visualizar as informações de alguns planetas do universo Star Wars em uma tabela.
+Além de poder utilizar vários filtros para refinar sua busca.
+
+<br>
+
+## Como excutar o projeto
+
+- Clone o projeto para sua máquina local;
+- `cd` no diretório do projeto;
+- Rode `npm install` para instalar as dependências;
+- Rode `npm start` para inicializar o projeto.
+
+Opcional:
+- Rode `npm run test-coverage` para visualizar a cobertura de testes.
+
+<br>
+
+## Autor
+
+- Maria Isabella Miranda da Silva <br>
+  - Linkedin: [@Maria Isabella](https://www.linkedin.com/in/maria-isabella-miranda/) <br>
+  - Email: ma_isabella.miranda@hotmail.com
+
+<br>
+
+## Mostre seu suporte
+
+Me dê uma ⭐️ se você gostou deste projeto!
