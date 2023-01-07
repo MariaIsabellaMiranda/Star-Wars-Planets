@@ -2,7 +2,7 @@
 
 # Sobre
 
-<p>Aqui fiz uma aplicação Front-End que consulta uma API para recuperar dados dos planetas do universo de Star Wars. Utilizei React com Hooks e como ferramente de manipulação de estado foi utilizado Context.<br>
+<p>Star Wars Planets é uma aplicação Front-End que consulta uma API para recuperar dados dos planetas do universo de Star Wars. Utilizei React com Hooks e como ferramente de manipulação de estado foi utilizado Context.<br>
 Nesta aplicação lidei com o retorno de uma API e manipulei os dados recebidos criando uma lógica de filtros para uma tabela de dados.<br>
 Desenvolvi também testes unitários utilizando a biblioteca React Testing Library e Jest, conseguindo uma cobertura de mais de 90%<br>
 Foi utilizada uma API desenvolvida pela Trybe para requisição dos dados.<p>
