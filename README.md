@@ -28,6 +28,7 @@ Além de poder utilizar vários filtros para refinar sua busca.
 <br>
 
 ## Como excutar o projeto
+ ⚠️**Importante**: É necessário ter o `node` na versão `16` instalado em sua máquina!
 
 - Clone o projeto para sua máquina local;
 - `cd` no diretório do projeto;
